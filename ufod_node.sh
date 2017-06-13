@@ -46,7 +46,7 @@ mkdir .ufo
 echo
 echo downloading source files...
 echo
-sudo git clone https://github.com/Bushstar/UFO-Project.git
+sudo git clone https://github.com/x0n4r/UFO-Project.git
 cd UFO-Project/src
 echo
 echo compiling... this takes about 4 hours...
