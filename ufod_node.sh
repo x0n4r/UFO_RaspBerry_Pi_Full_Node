@@ -46,40 +46,42 @@ mkdir .ufo
 echo
 echo downloading source files...
 echo
-sudo git clone https://github.com/x0n4r/UFO-Project.git
-cd UFO-Project/src
+sudo git clone https://github.com/UFOCoins/ufo.git
+cd ufo
 echo
-echo compiling... this takes about 4 hours...
+echo compiling... this takes some hours...
 echo
-sudo make -f makefile.unix USE_UPNP= ufod
+sudo ./autogen.sh
+sudo ./configure
+sudo make
 echo Installing UFOd in /usr/local/bin
-sudo cp -f /home/pi/UFO-Project/src/ufod /usr/local/bin
+sudo cp -f /home/pi/ufo/src/ufod /usr/local/bin
+sudo cp -f /home/pi/ufo/src/ufo-cli /usr/local/bin
+sudo cp -f /home/pi/ufo/src/ufo-tx /usr/local/bin
 
 echo
 echo Removing source files...
 echo
-sudo rm -rf /home/pi/UFO-Project
+sudo rm -rf /home/pi/ufo
 
 cd /home/pi
 
 echo
 echo Setting up ufod conf file
 echo
-echo "# ufo.conf" > .ufo/ufo.conf
-echo "# JSON-RPC options for controlling a running ufod process" >> .ufo/ufo.conf
-echo "# Server mode allows ufod to accept JSON-RPC commands" >> .ufo/ufo.conf
-echo "# You must set rpcuser and rpcpassword to secure the JSON-RPC api" >> .ufo/ufo.conf
-echo "rpcuser=rpcuser" >> .ufo/ufo.conf
+echo "# ufo.conf" > .ufo/ufocoin.conf
+echo "# JSON-RPC options for controlling a running ufod process" >> .ufo/ufocoin.conf
+echo "# Server mode allows ufod to accept JSON-RPC commands" >> .ufo/ufocoin.conf
+echo "# You must set rpcuser and rpcpassword to secure the JSON-RPC api" >> .ufo/ufocoin.conf
+echo "rpcusername=user10298357" >> .ufo/ufocoin.conf
 
 echo Enter a long random password for rpc. This should NOT be your wallet password.
 echo You wont need this password for normal use, so make it long and difficult.
 echo You can change it anytime by editting ufo.conf in /home/pi./ufo
 read rpcpassword
 
-echo "rpcpassword=$rpcpassword" >> .ufo/ufo.conf
-echo "listen=1" >> ~/.ufo/ufo.conf
-echo "server=1" >> ~/.ufo/ufo.conf
-echo "maxconnections=100" >> ~/.ufo/ufo.conf
+echo "rpcpassword=$rpcpassword" >> .ufo/ufocoin.conf
+echo "server=1" >> ~/.ufo/ufocoin.conf
 
 echo moving start script for ufod to /etc/init.d
 sudo mv /home/pi/UFO_RaspBerry_Pi_Full_Node/ufocoin /etc/init.d
