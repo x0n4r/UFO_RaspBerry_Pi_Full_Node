@@ -1,4 +1,6 @@
 ﻿Create a UFOcoin Full Node
+(These scripts are EXPERIMENTAL)
+(Upgraded for UFO wallet version 0.12)
 
 
 This instruction is to create a UFOcoin full node on a raspberry Pi.
@@ -34,7 +36,7 @@ Note this script will download the source from github and compile it on the Pi, 
 
 To Download everything off github onto your Pi use the following command
 
-sudo git clone https://github.com/tmuir12/UFO_RaspBerry_Pi_Full_Node
+sudo git clone https://github.com/x0n4r/UFO_RaspBerry_Pi_Full_Node
 
 Now enter the directory UFO_RaspBerry_Pi_Full_Node
 
@@ -66,29 +68,32 @@ Once the Pi has booted back up SSH back into it
 Give it 2 or 3 minutes for the UFOcoin daemon to start up and then to check it go
 
 
-ufod getinfo
+./ufo-cli -rpcconnect=127.0.0.1 getinfo
+
 
 and you should be presented something like this
 
 {
-    "version" : 80801,
-    "protocolversion" : 60005,
-    "walletversion" : 60000,
-    "balance" : 0.00000000,
-    "blocks" : 284218,
-    "timeoffset" : 0,
-    "connections" : 0,
-    "proxy" : "",
-    "difficulty" : 1.28399295,
-    "testnet" : false,
-    "keypoololdest" : 1415746250,
-    "keypoolsize" : 101,
-    "paytxfee" : 0.00000000,
-    "mininput" : 0.00001000,
-    "errors" : ""
+  "version": 120000,
+  "protocolversion": 70007,
+  "walletversion": 60000,
+  "balance": 0.00000000,
+  "blocks": 1235678,
+  "timeoffset": 1,
+  "connections": 8,
+  "proxy": "",
+  "difficulty": 10.56026104559234,
+  "testnet": false,
+  "keypoololdest": 1496174474,
+  "keypoolsize": 89,
+  "unlocked_until": 0,
+  "paytxfee": 0.00000000,
+  "relayfee": 0.00100000,
+  "errors": ""
 }
 
-If you get an error when trying the above command wait another couple of minutes and try again as it does take a few minutes for feathercoind daemon to fully start up.
+
+If you get an error when trying the above command wait another couple of minutes and try again as it does take a few minutes.
 Whilst it is catching up it will use about 90% of the CPU but once it has caught up it will only use 2% or 3%
 It will take around 20 hours to catch up if you are downloading the whole blockchain as the Pi is slower at doing this than your PC
 
@@ -103,6 +108,7 @@ sudo /etc/init.d/ufocoin start
 You will be prompted for user pi password deatils before it will start and if it doesn't start will give you an error message
 explaining why.
 
+** From original dev: tmuir12 **
 If you feel like Donating 
 UFO address C7NbYUFc5wbQ4crLxf3y4U21qnyPShEE22
 Feathercoin Address 6ihSh7xDnnwLJqKVAKZetTqzttxbSrnaLJ
