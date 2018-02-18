@@ -35,7 +35,7 @@ sudo ufw --force enable
 echo
 echo installing dependencies for UFOcoin...
 echo
-sudo apt-get -y install build-essential libboost-dev libboost-system-dev libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev libssl-dev libdb++-dev libminiupnpc-dev git g++ g++-4.6
+sudo apt-get -y install build-essential libtool autotools-dev automake pkg-config libevent-dev bsdmainutils libboost-dev libboost-system-dev libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev libssl-dev libdb++-dev libminiupnpc-dev git g++ g++-4.6
 echo
 
 
